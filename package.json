@@ -19,6 +19,7 @@
   "homepage": "https://github.com/gustiyoga/address-book#readme",
   "devDependencies": {
     "@babel/core": "^7.8.7",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "autoprefixer": "^9.7.4",
