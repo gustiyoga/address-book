@@ -5,3 +5,7 @@ import Form from './js/components/Form'
 
 const wrapper = document.getElementById('app')
 wrapper && ReactDOM.render(<Form />, wrapper)
+
+if (module.hot) {
+  module.hot.accept()
+}

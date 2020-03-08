@@ -1,9 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 const Visualizer = require('webpack-visualizer-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -26,14 +25,20 @@ module.exports = {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader"
+            loader: 'html-loader'
           }
         ]
       },
       {
-        test: /\.scss$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: true,
+              reloadAll: true,
+            }
+          },
           {
             loader: 'css-loader',
             options: {
@@ -54,27 +59,14 @@ module.exports = {
           },
         ]
       },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-      }
     ]
   },
   plugins: [
+    new CleanWebpackPlugin({}),
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
+      template: './src/index.html',
+      filename: './index.html'
     }),
-    new CleanWebpackPlugin({
-      dry: true,
-      verbose: true,
-      cleanOnceBeforeBuildPatterns: ['./dist']
-    }),
-    // new CopyWebpackPlugin([
-    //   { from: './src/images/', to: 'images/' },
-    //   { from: './src/fonts/', to: 'fonts/' },
-    //   { from: './src/index.html', to: '' },
-    // ]),
     new Visualizer({
       filename: './statistics.html'
     }),

@@ -29,7 +29,7 @@ class Form extends Component {
         />
         <br/>
         <h1>
-          {this.state.value}
+          value: {this.state.value}
         </h1>
       </form>
     )
