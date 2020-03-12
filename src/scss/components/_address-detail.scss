@@ -1,0 +1,13 @@
+.address-detail {
+  background-color: white;
+  display: inline-block;
+  height: 100%;
+  overflow-y: auto;
+  width: 100%;
+}
+
+@include tablet() {
+  .address-detail {
+    width: 60%;
+  }
+}

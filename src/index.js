@@ -1,11 +1,18 @@
-import React, { Component } from "react"
-import ReactDOM from "react-dom"
-import style from './scss/main.scss'
-import Form from './js/components/Form'
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import store from './js/store/index'
+import App from './js/components/App'
+import './scss/main.scss'
 
 const wrapper = document.getElementById('app')
-wrapper && ReactDOM.render(<Form />, wrapper)
+wrapper && render(
+  <Provider store={ store }>
+    <App />
+  </Provider>,
+  wrapper
+)
 
-if (module.hot) {
+if(module.hot) {
   module.hot.accept()
 }
