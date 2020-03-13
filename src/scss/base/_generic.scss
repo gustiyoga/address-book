@@ -5,7 +5,7 @@ html {
   -webkit-font-smoothing: antialiased;
   min-width: 320px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
 }
@@ -18,21 +18,43 @@ select {
 }
 
 body {
+  background-color: $tea-green;
   color: $grey;
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5;
+  overflow: hidden;
 }
 
 .container {
   height: 100vh;
+  position: relative;
   width: 100%;
 }
+.app-title {
+  background-color: $primary;
+  color: $white;
+  padding: 0.5rem;
+  text-align: center;
+  width: 100%;
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+}
 
-// @include mobile() {
-//   .container {
-//     margin-left: auto;
-//     margin-right: auto;
-//     max-width: 540px;
-//   }
-// }
+@include tablet() {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+}
+
+@include desktop() {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1010px;
+  }
+}

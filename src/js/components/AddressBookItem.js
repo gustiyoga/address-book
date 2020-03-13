@@ -1,27 +1,52 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setSelectedAddressBookIndex } from '../actions/index'
+
+const mapStateToProps = state => {
+  return {
+    selectedAddressBookIndex: state.selectedAddressBookIndex
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setSelectedAddressBookIndex: addressBookIndex => {
+      return dispatch(setSelectedAddressBookIndex(addressBookIndex))
+    }
+  }
+}
 
 class AddressBookItem extends Component {
+  handleFocus() {
+    this.props.setSelectedAddressBookIndex(this.props.index)
+  }
+
   render() {
     const item = this.props.item
+    const isActive = this.props.selectedAddressBookIndex === this.props.index && 'active'
 
     return(
-      <div className="address-item">
-        <img />
+      <li
+        tabIndex="0"
+        className={`address-item ${isActive}`}
+        onFocus={() => this.handleFocus()} >
 
+        <img src={ item.picture.thumbnail } width="82" alt={`${item.name.first} ${item.name.last}`} />
         <div>
           <h3>
             { `${item.name.first} ${item.name.last}` }
           </h3>
-          <a href={`tel:${item.cell}`}>
-            { item.cell }
-          </a>
           <p>
             { `${item.location.city}, ${item.location.state}, ${item.location.country}` }
           </p>
         </div>
-      </div>
+
+      </li>
     )
   }
 }
 
-export default AddressBookItem
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddressBookItem)

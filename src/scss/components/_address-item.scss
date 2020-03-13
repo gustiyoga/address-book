@@ -1,9 +1,48 @@
 .address-item {
-  background-color: white;
-  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.68rem;
+  justify-content: flex-start;
+  padding: 0.71em 1.14em;
   width: 100%;
+
+  &.active {
+    background-color: $primary;
+    color: white;
+    outline: none;
+    &:hover {
+      background-color: $primary;
+      color: white;
+    }
+  }
+  &:hover {
+    background-color: rgba($primary, 0.2);
+  }
+
+  img {
+    border-radius: 50px;
+    flex-shrink: 0;
+    flex-basis: 5em;
+    height: auto;
+    height: 5em;
+    width: 5em;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1.71em;
+    width: 100%;
+  }
 
   h3 {
     margin-bottom: 0.2em;
+  }
+}
+
+@include tablet() {
+  .address-item {
+    font-size: 0.75rem;
   }
 }

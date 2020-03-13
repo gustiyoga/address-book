@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addAddressBook } from '../actions/index'
 import { fetchData } from '../helpers/fetch'
+import AppTitle from './AppTitle'
 import AddressBookList from './AddressBookList'
 import AddressBookDetail from './AddressBookDetail'
 
@@ -28,8 +29,9 @@ class App extends Component {
   async handleGetData() {
     const params = {
       page: 1,
-      results: 10,
-      seed: 'abc'
+      results: 50,
+      seed: 'yop',
+      exc: 'gender,login,registered,phone,nat'
     }
     this.setState({
       isLoading: true
@@ -46,6 +48,7 @@ class App extends Component {
   render() {
     return (
       <main className="container">
+        <AppTitle />
         <AddressBookList
           isLoading={ this.state.isLoading }
         />

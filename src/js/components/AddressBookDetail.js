@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = state => {
   return {
-    addressBooks: state.addressBooks
+    addressBook: state.selectedAddressBookIndex !== null ? state.addressBooks[state.selectedAddressBookIndex] : {}
   }
 }
 
@@ -11,7 +11,7 @@ class AddressBookDetail extends Component {
   render() {
     return(
       <div className="address-detail">
-        Address Detail
+        { this.props.addressBook.name?.first }
       </div>
     )
   }

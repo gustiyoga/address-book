@@ -1,13 +1,18 @@
 .address-detail {
   background-color: white;
-  display: inline-block;
   height: 100%;
   overflow-y: auto;
+  position: absolute;
+  top: 43px;
+  left: 100%;
   width: 100%;
 }
 
 @include tablet() {
   .address-detail {
-    width: 60%;
+    position: initial;
+    top: auto;
+    left: auto;
+    width: 65%;
   }
 }
