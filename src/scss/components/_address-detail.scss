@@ -1,11 +1,31 @@
 .address-detail {
   background-color: white;
-  height: 100%;
+  height: calc(100% - 43px);
   overflow-y: auto;
+  overflow-x: hidden;
   position: absolute;
   top: 43px;
   left: 100%;
   width: 100%;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.profile-head {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  & > img {
+    border-radius: 128px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 
 @include tablet() {

@@ -1,5 +1,6 @@
 // color
 $white: rgb(255, 255, 255) !default;
+$grey-lighter: rgb(241, 241, 241) !default;
 $grey: rgb(74, 74, 74) !default;
 $grey-darker: rgb(54, 54, 54) !default;
 
@@ -9,7 +10,7 @@ $cadet-blue: #4da1a9 !default;
 $bdazzled-blue: #2e5077 !default;
 $claret: #611C35 !default;
 
-$primary: $bdazzled-blue;
+$primary: $cadet-blue;
 $secondary: $deep-saffron;
 
 // typography

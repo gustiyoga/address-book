@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addAddressBook } from '../actions/index'
+import {
+  addAddressBook,
+  setAddressBookFiltered,
+} from '../actions/index'
 import { fetchData } from '../helpers/fetch'
 import AppTitle from './AppTitle'
 import AddressBookList from './AddressBookList'
@@ -10,7 +13,10 @@ const mapDispatchToProps = dispatch => {
   return {
     addAddressBook: addressBook => {
       return dispatch(addAddressBook(addressBook))
-    }
+    },
+    setAddressBookFiltered: addressBooksFiltered => {
+      return dispatch(setAddressBookFiltered(addressBooksFiltered))
+    },
   }
 }
 
@@ -19,6 +25,7 @@ class App extends Component {
     super(props)
     this.state = {
       isLoading: false,
+      page: 1,
     }
   }
 
@@ -28,10 +35,10 @@ class App extends Component {
 
   async handleGetData() {
     const params = {
-      page: 1,
+      page: this.state.page,
       results: 50,
       seed: 'yop',
-      exc: 'gender,login,registered,phone,nat'
+      exc: 'gender,login,dob,registered,phone,nat'
     }
     this.setState({
       isLoading: true
@@ -41,8 +48,7 @@ class App extends Component {
       isLoading: false
     })
     this.props.addAddressBook(addressBooks?.results || [])
-
-    return true
+    this.props.setAddressBookFiltered(addressBooks?.results || [])
   }
 
   render() {

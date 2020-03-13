@@ -1,6 +1,7 @@
 import {
   ADD_ADDRESS_BOOK,
   SET_SELECTED_ADDRESS_BOOK_INDEX,
+  SET_ADDRESS_BOOK_FILTERED,
 } from '../constants/action-types'
 
 const initialState = {
@@ -16,6 +17,10 @@ const rootReducer = (state = initialState, action) => {
   } else if (action.type === SET_SELECTED_ADDRESS_BOOK_INDEX) {
     return Object.assign({}, state, {
       selectedAddressBookIndex: action.payload
+    })
+  } else if (action.type === SET_ADDRESS_BOOK_FILTERED) {
+    return Object.assign({}, state, {
+      addressBooksFiltered: [].concat(action.payload)
     })
   }
 

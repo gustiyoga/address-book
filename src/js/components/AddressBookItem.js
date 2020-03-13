@@ -31,13 +31,15 @@ class AddressBookItem extends Component {
         className={`address-item ${isActive}`}
         onFocus={() => this.handleFocus()} >
 
-        <img src={ item.picture.thumbnail } width="82" alt={`${item.name.first} ${item.name.last}`} />
+        <img src={ item.picture?.thumbnail } width="82" alt={`${item.name?.first} ${item.name?.last}`} />
         <div>
-          <h3>
-            { `${item.name.first} ${item.name.last}` }
-          </h3>
+          <p className="name">
+            <strong>
+              { `${item.name?.first} ${item.name?.last}` }
+            </strong>
+          </p>
           <p>
-            { `${item.location.city}, ${item.location.state}, ${item.location.country}` }
+            { `${item.location?.city}, ${item.location?.state}, ${item.location?.country}` }
           </p>
         </div>
 

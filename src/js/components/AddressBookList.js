@@ -5,21 +5,27 @@ import AddressBookSearch from './AddressBookSearch'
 
 const mapStateToProps = state => {
   return {
-    addressBooks: state.addressBooks.length > 0 && state.addressBooks.map((item, index) => {
-      return(
-        <AddressBookItem key={ index } item={ item } index={ index } />
-      )
-    })
+    addressBooksFiltered: state.addressBooksFiltered,
   }
 }
 
 class AddressBookList extends Component {
+  addressBooksComponent() {
+    return(
+      this.props.addressBooksFiltered.map((item, index) => {
+        return(
+          <AddressBookItem key={ item.email } item={ item } index={ index } />
+        )
+      })
+    )
+  }
+
   render() {
     return(
       <div className="address-sidebar">
         <AddressBookSearch />
         <ul className="address-list" tabIndex="0">
-          { this.props.isLoading ? 'Loading' : this.props.addressBooks }
+          { this.props.isLoading ? 'Loading' : this.addressBooksComponent() }
         </ul>
       </div>
     )
@@ -28,5 +34,5 @@ class AddressBookList extends Component {
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
 )(AddressBookList)
