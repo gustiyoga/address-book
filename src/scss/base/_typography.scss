@@ -43,6 +43,14 @@ h6 {
   margin-bottom: 1em;
 }
 
+a {
+  color: $primary;
+  &:hover,
+  &:focus {
+    color: $secondary;
+  }
+}
+
 strong {
   font-family: 'MontserratSemiBold';
   font-weight: 600;

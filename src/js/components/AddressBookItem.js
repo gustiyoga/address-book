@@ -23,12 +23,12 @@ class AddressBookItem extends Component {
 
   render() {
     const item = this.props.item
-    const isActive = this.props.selectedAddressBookIndex === this.props.index && 'active'
+    const isActive = this.props.selectedAddressBookIndex === this.props.index ? ' active' : ''
 
     return(
       <li
         tabIndex="0"
-        className={`address-item ${isActive}`}
+        className={`address-item${isActive}`}
         onFocus={() => this.handleFocus()} >
 
         <img src={ item.picture?.thumbnail } width="82" alt={`${item.name?.first} ${item.name?.last}`} />
