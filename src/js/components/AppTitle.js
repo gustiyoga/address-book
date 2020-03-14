@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setSelectedAddressBookIndex } from '../actions/index'
+import {
+  setSelectedAddressBookIndex,
+  setDarkMode,
+} from '../actions/index'
 import IC_BACK from '../../image/icon/ic-back.svg'
 import IC_DARKMODE_ENABLED from '../../image/icon/ic-dark-enabled.svg'
 import IC_DARKMODE_DISABLED from '../../image/icon/ic-dark-disabled.svg'
 
 const mapStateToProps = state => {
   return {
-    selectedAddressBookIndex: state.selectedAddressBookIndex
+    selectedAddressBookIndex: state.selectedAddressBookIndex,
+    isDarkModeEnabled: state.isDarkModeEnabled,
   }
 }
 
@@ -15,28 +19,20 @@ const mapDispatchToProps = dispatch => {
   return {
     setSelectedAddressBookIndex: addressBookIndex => {
       return dispatch(setSelectedAddressBookIndex(addressBookIndex))
+    },
+    setDarkMode: isDarkModeEnabled => {
+      return dispatch(setDarkMode(isDarkModeEnabled))
     }
   }
 }
 
 class AppTitle extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isDarkModeEnabled: false,
-    }
-  }
-
   handleBackButton() {
     this.props.setSelectedAddressBookIndex(null)
   }
 
   handleDarkModeButton() {
-    this.setState(prevState => {
-      return{
-        isDarkModeEnabled: !prevState.isDarkModeEnabled
-      }
-    })
+    this.props.setDarkMode(!this.props.isDarkModeEnabled)
   }
 
   backButtonComponent() {
@@ -60,8 +56,8 @@ class AppTitle extends Component {
 
         <img
           className="button-darkmode"
-          src={ this.state.isDarkModeEnabled ? IC_DARKMODE_ENABLED : IC_DARKMODE_DISABLED }
-          title={ this.state.isDarkModeEnabled ? 'Turn off dark mode' : 'Turn on dark mode' }
+          src={ this.props.isDarkModeEnabled ? IC_DARKMODE_ENABLED : IC_DARKMODE_DISABLED }
+          title={ this.props.isDarkModeEnabled ? 'Turn off dark mode' : 'Turn on dark mode' }
           onClick={ () => this.handleDarkModeButton() } />
       </div>
     )

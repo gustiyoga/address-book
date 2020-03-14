@@ -1,8 +1,8 @@
 import {
   ADD_ADDRESS_BOOK,
-import { ADD_ADDRESS_BOOK } from '../constants/action-types'
   SET_SELECTED_ADDRESS_BOOK_INDEX,
   SET_ADDRESS_BOOK_FILTERED,
+  SET_DARK_MODE,
 } from '../constants/action-types'
 
 export const addAddressBook = (payload) => {
@@ -26,4 +26,9 @@ export const setAddressBookFiltered = (payload) => {
   }
 }
 
-
+export const setDarkMode = (payload) => {
+  return {
+    type: SET_DARK_MODE,
+    payload
+  }
+}

@@ -33,18 +33,19 @@ body {
 }
 .app-title {
   background-color: $primary;
-  color: $white;
+  color: $grey-lighter;
   padding: 0.5rem;
   position: relative;
   text-align: center;
   width: 100%;
+  transition: background-color ease $darkmode-transition-speed;
 
   .button-back {
     cursor: pointer;
     position: absolute;
     top: .2rem;
     left: .6rem;
-    width: 5rem;
+    width: 2.2rem;
   }
 
   .button-darkmode {

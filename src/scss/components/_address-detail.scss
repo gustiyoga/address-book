@@ -9,13 +9,15 @@
   left: 100%;
   width: 100%;
   transition: transform ease-in .2s,
-              opacity ease .1s;
+              opacity ease .1s,
+              background-color ease $darkmode-transition-speed;
 
   &.active {
     opacity: 1;
     transform: translateX(-100%);
     transition: transform cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s,
-                opacity ease .4s;
+                opacity ease .4s,
+                background-color ease $darkmode-transition-speed;
   }
 
   @include scroll-bar();
@@ -28,7 +30,7 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  transition: all ease 1s;
+  transition: color ease $darkmode-transition-speed;
 }
 
 .profile {
@@ -59,6 +61,7 @@
 
   h4 {
     margin-bottom: 0.5rem;
+    transition: color ease $darkmode-transition-speed;
   }
 }
 
@@ -66,6 +69,7 @@
   background-color: $white;
   border-radius: 8px;
   padding: 1rem;
+  transition: background-color ease $darkmode-transition-speed;
 
   .title {
     color: $grey;

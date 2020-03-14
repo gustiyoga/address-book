@@ -9,6 +9,12 @@ import AppTitle from './AppTitle'
 import AddressBookList from './AddressBookList'
 import AddressBookDetail from './AddressBookDetail'
 
+const mapStateToProps = state => {
+  return {
+    isDarkModeEnabled: state.isDarkModeEnabled,
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     addAddressBook: addressBook => {
@@ -52,8 +58,10 @@ class App extends Component {
   }
 
   render() {
+    const isDarkModeEnabled = this.props.isDarkModeEnabled ? ' dark-mode' : ''
+
     return (
-      <main className="container">
+      <main className={`container${isDarkModeEnabled}`}>
         <AppTitle />
         <AddressBookList
           isLoading={ this.state.isLoading }
@@ -65,6 +73,6 @@ class App extends Component {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App)

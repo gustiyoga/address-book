@@ -2,11 +2,14 @@ import {
   ADD_ADDRESS_BOOK,
   SET_SELECTED_ADDRESS_BOOK_INDEX,
   SET_ADDRESS_BOOK_FILTERED,
+  SET_DARK_MODE,
 } from '../constants/action-types'
 
 const initialState = {
   addressBooks: [],
+  addressBooksFiltered: [],
   selectedAddressBookIndex: null,
+  isDarkModeEnabled: false,
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -21,6 +24,10 @@ const rootReducer = (state = initialState, action) => {
   } else if (action.type === SET_ADDRESS_BOOK_FILTERED) {
     return Object.assign({}, state, {
       addressBooksFiltered: [].concat(action.payload)
+    })
+  } else if (action.type === SET_DARK_MODE) {
+    return Object.assign({}, state, {
+      isDarkModeEnabled: action.payload
     })
   }
 

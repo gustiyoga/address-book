@@ -1,0 +1,56 @@
+.dark-mode {
+  a {
+    color: $bdazzled-blue;
+    &:hover,
+    &:focus {
+      color: $secondary;
+    }
+  }
+
+  h3,
+  h4 {
+    color: $grey-lighter;
+  }
+
+  .app-title {
+    background-color: $bdazzled-blue;
+  }
+
+  .address-search {
+    background-color: $grey-darker;
+  }
+
+  .address-list {
+    background-color: $grey-darker;
+    color: $grey-lighter;
+    &::-webkit-scrollbar-track {
+      background: $grey-darker;
+    }
+  }
+
+  .address-item {
+    &.active {
+      background-color: $bdazzled-blue;
+      &:hover {
+        background-color: $bdazzled-blue;
+      }
+    }
+    &:hover {
+      background-color: rgba($bdazzled-blue, 0.2);
+    }
+  }
+
+  .address-detail {
+    background-color: $grey;
+    &::-webkit-scrollbar-track {
+      background: $grey-darker;
+    }
+    .empty-state {
+      color: $grey-lighter;
+    }
+  }
+
+  .profile-card {
+    background-color: $grey-lighter;
+  }
+}
