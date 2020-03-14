@@ -11,6 +11,7 @@ import AddressBookDetail from './AddressBookDetail'
 
 const mapStateToProps = state => {
   return {
+    addressBooks: state.addressBooks,
     isDarkModeEnabled: state.isDarkModeEnabled,
   }
 }
@@ -31,30 +32,46 @@ class App extends Component {
     super(props)
     this.state = {
       isLoading: false,
-      page: 1,
+      isHandleNextPage: false,
+      params: {
+        page: 1,
+        results: 50,
+        seed: 'yop',
+        exc: 'gender,login,dob,registered,phone,nat'
+      }
     }
+
+    this.handleNextPage = this.handleNextPage.bind(this)
   }
 
   componentDidMount() {
-    this.handleGetData()
+    this.handleInitData()
   }
 
-  async handleGetData() {
-    const params = {
-      page: this.state.page,
-      results: 50,
-      seed: 'yop',
-      exc: 'gender,login,dob,registered,phone,nat'
+  async handleNextPage() {
+    if(!this.state.isHandleNextPage && this.props.addressBooks.length < 1000) {
+      await this.setState(prevState => ({
+        isHandleNextPage: true,
+        params: {
+          ...prevState.params,
+          page: prevState.params.page + 1
+        }
+      }))
+  
+      const addressBooks = await fetchData('', {}, this.state.params)
+      await this.props.addAddressBook(addressBooks?.results || [])
+      this.props.setAddressBookFiltered(this.props.addressBooks)
+      this.setState({ isHandleNextPage: false })
     }
-    this.setState({
-      isLoading: true
-    })
-    const addressBooks = await fetchData('', {}, params)
-    this.setState({
-      isLoading: false
-    })
-    this.props.addAddressBook(addressBooks?.results || [])
-    this.props.setAddressBookFiltered(addressBooks?.results || [])
+  }
+
+  async handleInitData() {
+    this.setState({ isLoading: true })
+    const addressBooks = await fetchData('', {}, this.state.params)
+    this.setState({ isLoading: false })
+
+    await this.props.addAddressBook(addressBooks?.results || [])
+    this.props.setAddressBookFiltered(this.props.addressBooks)
   }
 
   render() {
@@ -65,6 +82,7 @@ class App extends Component {
         <AppTitle />
         <AddressBookList
           isLoading={ this.state.isLoading }
+          handleNextPage={ this.handleNextPage }
         />
         <AddressBookDetail />
       </main>
