@@ -99,7 +99,6 @@ class AddressBookSearch extends Component {
     this.setState({ searchQuery: value }, () => {
       this.doSearch()
     })
-
   }
 
   doSearch() {
@@ -135,6 +134,7 @@ class AddressBookSearch extends Component {
       }
     })
 
+    this.props.getSearchQuery(this.state.searchQuery)
     this.props.setSelectedAddressBookIndex(null)
     this.props.setAddressBookFiltered(addressBooksFiltered)
   }

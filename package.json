@@ -52,6 +52,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
-    "minireset.css": "0.0.6"
+    "minireset.css": "0.0.6",
+    "react-lazyload": "^2.6.5"
   }
 }
