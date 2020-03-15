@@ -2,7 +2,8 @@ import {
   ADD_ADDRESS_BOOK,
   SET_SELECTED_ADDRESS_BOOK_INDEX,
   SET_ADDRESS_BOOK_FILTERED,
-  SET_DARK_MODE,
+  SET_ADVANCE_SEARCH,
+  TOGGLE_ADVANCE_SEARCH_MODAL,
 } from '../constants/action-types'
 
 export const addAddressBook = (payload) => {
@@ -26,9 +27,16 @@ export const setAddressBookFiltered = (payload) => {
   }
 }
 
-export const setDarkMode = (payload) => {
+export const setAdvanceSearch = (payload) => {
   return {
-    type: SET_DARK_MODE,
+    type: SET_ADVANCE_SEARCH,
+    payload
+  }
+}
+
+export const toggleAdvanceSearch = (payload) => {
+  return {
+    type: TOGGLE_ADVANCE_SEARCH_MODAL,
     payload
   }
 }

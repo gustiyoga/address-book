@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AddressBookItem from './AddressBookItem'
 import AddressBookSearch from './AddressBookSearch'
+import EmptyState from './EmptyState'
+import EMPTY_STATE_IMAGE from '../../image/placeholder/empty-results.svg'
 
 const mapStateToProps = state => {
   return {
@@ -24,6 +26,12 @@ class AddressBookList extends Component {
     }
   }
 
+  emptyStateComponent() {
+    return(
+      <EmptyState image={ EMPTY_STATE_IMAGE } text="No data" />
+    )
+  }
+
   addressBooksComponent() {
     return(
       this.props.addressBooksFiltered.map((item, index) => {
@@ -43,6 +51,7 @@ class AddressBookList extends Component {
           tabIndex="0"
           onScroll={ this.handleScroll }>
           { this.props.isLoading ? 'Loading' : this.addressBooksComponent() }
+          { !this.props.isLoading && this.props.addressBooksFiltered.length === 0 && this.emptyStateComponent() }
         </ul>
       </div>
     )

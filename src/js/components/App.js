@@ -8,11 +8,11 @@ import { fetchData } from '../helpers/fetch'
 import AppTitle from './AppTitle'
 import AddressBookList from './AddressBookList'
 import AddressBookDetail from './AddressBookDetail'
+import AdvanceSearchModal from './AdvanceSearchModal'
 
 const mapStateToProps = state => {
   return {
     addressBooks: state.addressBooks,
-    isDarkModeEnabled: state.isDarkModeEnabled,
   }
 }
 
@@ -33,6 +33,7 @@ class App extends Component {
     this.state = {
       isLoading: false,
       isHandleNextPage: false,
+      isDarkModeEnabled: false,
       params: {
         page: 1,
         results: 50,
@@ -42,10 +43,17 @@ class App extends Component {
     }
 
     this.handleNextPage = this.handleNextPage.bind(this)
+    this.handleDarkModeToggle = this.handleDarkModeToggle.bind(this)
   }
 
   componentDidMount() {
     this.handleInitData()
+  }
+
+  handleDarkModeToggle() {
+    this.setState(prevState => ({
+      isDarkModeEnabled: !prevState.isDarkModeEnabled
+    }))
   }
 
   async handleNextPage() {
@@ -75,16 +83,20 @@ class App extends Component {
   }
 
   render() {
-    const isDarkModeEnabled = this.props.isDarkModeEnabled ? ' dark-mode' : ''
+    const isDarkModeEnabled = this.state.isDarkModeEnabled ? ' dark-mode' : ''
 
     return (
       <main className={`container${isDarkModeEnabled}`}>
-        <AppTitle />
+        <AppTitle
+          isDarkModeEnabled={ this.state.isDarkModeEnabled }
+          handleDarkModeToggle={ this.handleDarkModeToggle } />
         <AddressBookList
           isLoading={ this.state.isLoading }
           handleNextPage={ this.handleNextPage }
         />
         <AddressBookDetail />
+
+        <AdvanceSearchModal />
       </main>
     )
   }

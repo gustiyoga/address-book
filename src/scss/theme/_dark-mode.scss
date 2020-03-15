@@ -1,4 +1,5 @@
 .dark-mode {
+  // generic
   a {
     color: $bdazzled-blue;
     &:hover,
@@ -6,20 +7,23 @@
       color: $secondary;
     }
   }
-
   h3,
   h4 {
     color: $grey-lighter;
   }
 
+  // title
   .app-title {
     background-color: $bdazzled-blue;
   }
 
+  // sidebar
   .address-search {
     background-color: $grey-darker;
   }
-
+  .button-filter {
+    filter: invert(1);
+  }
   .address-list {
     background-color: $grey-darker;
     color: $grey-lighter;
@@ -27,7 +31,6 @@
       background: $grey-darker;
     }
   }
-
   .address-item {
     &.active {
       background-color: $bdazzled-blue;
@@ -40,6 +43,7 @@
     }
   }
 
+  // address detail
   .address-detail {
     background-color: $grey;
     &::-webkit-scrollbar-track {
@@ -49,8 +53,39 @@
       color: $grey-lighter;
     }
   }
-
   .profile-card {
     background-color: $grey-lighter;
+  }
+
+  // modal
+  .modal-dialog {
+    background-color: $grey-darker;
+    color: $grey-lighter;
+  }
+  .button-close {
+    filter: invert(1);
+  }
+
+  // elements
+  .checkbox {
+    input {
+      &:checked ~ .checkmark {
+        background-color: $bdazzled-blue;
+      }
+      &:focus {
+        ~span {
+          outline: 1px solid $bdazzled-blue;
+        }
+      }
+    }
+  }
+  .button {
+    background-color: $bdazzled-blue;
+    &:hover {
+      background-color: $secondary; 
+    }
+    &:focus {
+      background-color: rgba($secondary, 0.9);
+    }
   }
 }

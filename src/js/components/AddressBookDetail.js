@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import EMPTY_STATE_IMAGE from '../../image/placeholder/empty-address-book.svg'
+import EmptyState from './EmptyState'
 
 const mapStateToProps = state => {
   return {
@@ -12,14 +13,7 @@ const mapStateToProps = state => {
 class AddressBookDetail extends Component {
   emptyStateComponent() {
     return(
-      <div className="empty-state">
-        <img src={ EMPTY_STATE_IMAGE } width="200" alt="empty state address book detail" />
-        <p>
-          <strong>
-            Please select a contact
-          </strong>
-        </p>
-      </div>
+      <EmptyState image={ EMPTY_STATE_IMAGE } text="Please select a contact" />
     )
   }
   

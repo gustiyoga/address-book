@@ -2,14 +2,21 @@ import {
   ADD_ADDRESS_BOOK,
   SET_SELECTED_ADDRESS_BOOK_INDEX,
   SET_ADDRESS_BOOK_FILTERED,
-  SET_DARK_MODE,
+  SET_ADVANCE_SEARCH,
+  TOGGLE_ADVANCE_SEARCH_MODAL,
 } from '../constants/action-types'
 
 const initialState = {
   addressBooks: [],
   addressBooksFiltered: [],
   selectedAddressBookIndex: null,
-  isDarkModeEnabled: false,
+  isAdvanceSearchModalShow: false,
+  advanceSearch: {
+    isFilterName: true,
+    isFilterLocation: false,
+    isFilterEmail: false,
+    isFilterPhone: false,
+  }
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -37,10 +44,15 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         addressBooksFiltered: [].concat(action.payload),
       }
-    case SET_DARK_MODE:
+    case SET_ADVANCE_SEARCH:
       return {
         ...state,
-        isDarkModeEnabled: action.payload,
+        advanceSearch: Object.assign({}, action.payload),
+      }
+    case TOGGLE_ADVANCE_SEARCH_MODAL:
+      return {
+        ...state,
+        isAdvanceSearchModalShow: action.payload,
       }
     default:
       return state

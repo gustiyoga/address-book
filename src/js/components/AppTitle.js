@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {
-  setSelectedAddressBookIndex,
-  setDarkMode,
-} from '../actions/index'
+import { setSelectedAddressBookIndex } from '../actions/index'
 import IC_BACK from '../../image/icon/ic-back.svg'
 import IC_DARKMODE_ENABLED from '../../image/icon/ic-dark-enabled.svg'
 import IC_DARKMODE_DISABLED from '../../image/icon/ic-dark-disabled.svg'
@@ -11,7 +8,6 @@ import IC_DARKMODE_DISABLED from '../../image/icon/ic-dark-disabled.svg'
 const mapStateToProps = state => {
   return {
     selectedAddressBookIndex: state.selectedAddressBookIndex,
-    isDarkModeEnabled: state.isDarkModeEnabled,
   }
 }
 
@@ -20,9 +16,6 @@ const mapDispatchToProps = dispatch => {
     setSelectedAddressBookIndex: addressBookIndex => {
       return dispatch(setSelectedAddressBookIndex(addressBookIndex))
     },
-    setDarkMode: isDarkModeEnabled => {
-      return dispatch(setDarkMode(isDarkModeEnabled))
-    }
   }
 }
 
@@ -32,7 +25,7 @@ class AppTitle extends Component {
   }
 
   handleDarkModeButton() {
-    this.props.setDarkMode(!this.props.isDarkModeEnabled)
+    this.props.handleDarkModeToggle()
   }
 
   backButtonComponent() {
@@ -41,6 +34,9 @@ class AppTitle extends Component {
         className="button-back"
         src={ IC_BACK }
         title="Back"
+        tabIndex="0"
+        alt=""
+        onKeyPress={ (e) => e.key == 'Enter' && this.handleBackButton() }
         onClick={ () => this.handleBackButton() } />
     )
   }
@@ -58,6 +54,9 @@ class AppTitle extends Component {
           className="button-darkmode"
           src={ this.props.isDarkModeEnabled ? IC_DARKMODE_ENABLED : IC_DARKMODE_DISABLED }
           title={ this.props.isDarkModeEnabled ? 'Turn off dark mode' : 'Turn on dark mode' }
+          tabIndex="0"
+          alt=""
+          onKeyPress={ (e) => e.key == 'Enter' && this.handleDarkModeButton() }
           onClick={ () => this.handleDarkModeButton() } />
       </div>
     )

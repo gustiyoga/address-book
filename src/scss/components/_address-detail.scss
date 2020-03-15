@@ -23,16 +23,6 @@
   @include scroll-bar();
 }
 
-.empty-state {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  transition: color ease $darkmode-transition-speed;
-}
-
 .profile {
   padding: 1rem;
 }
