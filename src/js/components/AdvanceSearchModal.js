@@ -24,6 +24,13 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+/**
+ * Component for advance search modal, so user can filter specific data.
+ * 
+ * @component
+ * @example
+ * <AdvanceSearchModal />
+ */
 class AdvanceSearchModal extends Component {
   constructor(props) {
     super(props)
@@ -39,11 +46,20 @@ class AdvanceSearchModal extends Component {
     this.handleSaveButton = this.handleSaveButton.bind(this)
   }
 
+  /**
+   * Handle close button if clicked or enter pressed when focus on the
+   * close button, it will close the advance search modal
+   */
   handleCloseButton() {
     this.props.toggleAdvanceSearch(!this.props.isAdvanceSearchModalShow)
     this.setState(this.props.advanceSearch)
   }
 
+  /**
+   * Handle change checkbox if clicked and will update the state
+   * based on which checkbox clicked by its name attribute
+   * @param {event} event
+   */
   handleChange(event) {
     const { name, checked } = event.target
 
@@ -52,6 +68,12 @@ class AdvanceSearchModal extends Component {
     })
   }
 
+  /**
+   * Handle change checkbox if enter pressed when focus on the
+   * checkbox and will update the state based on which checkbox
+   * clicked by its name attribute
+   * @param {event} event
+   */
   handleEnter() {
     const { name, checked } = event.target
     const { key } = event
@@ -63,19 +85,22 @@ class AdvanceSearchModal extends Component {
     }
   }
 
+  /**
+   * Handle save button when clicked. Update redux state advanceSearch
+   * with local advanceSearch and call handleCloseButton function.
+   * If nothing checked, show alert message.
+   * 
+   * @async
+   * @param {event} event
+   */
   async handleSaveButton() {
     const isNotValid = Object.keys(this.state).every((k) => !this.state[k])
 
     if(isNotValid) {
       alert('Please select minimal 1')
     } else {
-      const advanceSearch = {
-        isFilterName: this.state.isFilterName,
-        isFilterLocation: this.state.isFilterLocation,
-        isFilterEmail: this.state.isFilterEmail,
-        isFilterPhone: this.state.isFilterPhone,
-      }
-  
+      const advanceSearch = Object.assign({}, this.state)
+
       await this.props.setAdvanceSearch(advanceSearch)
       this.handleCloseButton()
     }  

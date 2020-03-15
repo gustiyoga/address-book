@@ -27,6 +27,14 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+/**
+ * Main component.
+ * 
+ * @component
+ * @example
+ * <App />
+ * @hideconstructor
+ */
 class App extends Component {
   constructor(props) {
     super(props)
@@ -46,16 +54,30 @@ class App extends Component {
     this.handleDarkModeToggle = this.handleDarkModeToggle.bind(this)
   }
 
+  /**
+   * Fetch data on init by calling handleInitData function
+   */
   componentDidMount() {
     this.handleInitData()
   }
 
+  /**
+   * Handle dark mode button that called from AppTitle component,
+   * update isDarkModeEnabled state with oposite of current state
+   */
   handleDarkModeToggle() {
     this.setState(prevState => ({
       isDarkModeEnabled: !prevState.isDarkModeEnabled
     }))
   }
 
+  /**
+   * Handle next page when user reach bottom of the list, fetch data
+   * on the next page and add it into addressBooks state,
+   * clone new addressBooks data into addressBooksFiltered state
+   * 
+   * @async
+   */
   async handleNextPage() {
     if(!this.state.isHandleNextPage && this.props.addressBooks.length < 1000) {
       await this.setState(prevState => ({
@@ -73,6 +95,12 @@ class App extends Component {
     }
   }
 
+  /**
+   * Handle init data, show loading state while fetching data from API
+   * Put the data into addressBooks state and clone it into addressBooksFiltered state
+   * 
+   * @async
+   */
   async handleInitData() {
     this.setState({ isLoading: true })
     const addressBooks = await fetchData('', {}, this.state.params)

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config build/webpack.dev.js --open",
-    "prod": "webpack --config build/webpack.prod.js"
+    "prod": "webpack --config build/webpack.prod.js",
+    "docs": "jsdoc -c jsdoc.conf.json"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
+    "docdash": "^1.2.0",
     "minireset.css": "0.0.6",
     "react-lazyload": "^2.6.5"
   }

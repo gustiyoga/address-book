@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/App.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddressBookDetail.html">AddressBookDetail</a></li><li><a href="AddressBookItem.html">AddressBookItem</a><ul class='methods'><li data-type='method'><a href="AddressBookItem.html#handleFocus">handleFocus</a></li></ul></li><li><a href="AddressBookList.html">AddressBookList</a><ul class='methods'><li data-type='method'><a href="AddressBookList.html#addressBooksComponent">addressBooksComponent</a></li><li data-type='method'><a href="AddressBookList.html#emptyStateComponent">emptyStateComponent</a></li><li data-type='method'><a href="AddressBookList.html#getSearchQuery">getSearchQuery</a></li><li data-type='method'><a href="AddressBookList.html#handleScroll">handleScroll</a></li><li data-type='method'><a href="AddressBookList.html#loadingComponent">loadingComponent</a></li></ul></li><li><a href="AddressBookSearch.html">AddressBookSearch</a><ul class='methods'><li data-type='method'><a href="AddressBookSearch.html#badgeComponent">badgeComponent</a></li><li data-type='method'><a href="AddressBookSearch.html#buttonClearComponent">buttonClearComponent</a></li><li data-type='method'><a href="AddressBookSearch.html#componentDidUpdate">componentDidUpdate</a></li><li data-type='method'><a href="AddressBookSearch.html#doSearch">doSearch</a></li><li data-type='method'><a href="AddressBookSearch.html#handleChange">handleChange</a></li><li data-type='method'><a href="AddressBookSearch.html#handleClearButton">handleClearButton</a></li><li data-type='method'><a href="AddressBookSearch.html#handleFilterButton">handleFilterButton</a></li></ul></li><li><a href="AdvanceSearchModal.html">AdvanceSearchModal</a><ul class='methods'><li data-type='method'><a href="AdvanceSearchModal.html#handleChange">handleChange</a></li><li data-type='method'><a href="AdvanceSearchModal.html#handleCloseButton">handleCloseButton</a></li><li data-type='method'><a href="AdvanceSearchModal.html#handleEnter">handleEnter</a></li><li data-type='method'><a href="AdvanceSearchModal.html#handleSaveButton">handleSaveButton</a></li></ul></li><li><a href="App.html">App</a><ul class='methods'><li data-type='method'><a href="App.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="App.html#handleDarkModeToggle">handleDarkModeToggle</a></li><li data-type='method'><a href="App.html#handleInitData">handleInitData</a></li><li data-type='method'><a href="App.html#handleNextPage">handleNextPage</a></li></ul></li><li><a href="AppTitle.html">AppTitle</a><ul class='methods'><li data-type='method'><a href="AppTitle.html#backButtonComponent">backButtonComponent</a></li><li data-type='method'><a href="AppTitle.html#handleBackButton">handleBackButton</a></li><li data-type='method'><a href="AppTitle.html#handleDarkModeButton">handleDarkModeButton</a></li></ul></li><li><a href="EmptyState.html">EmptyState</a></li></ul><h3>Modules</h3><ul><li><a href="module-addAddressBook.html">addAddressBook</a></li><li><a href="module-fetchData.html">fetchData</a></li><li><a href="module-setAddressBookFiltered.html">setAddressBookFiltered</a></li><li><a href="module-setAdvanceSearch.html">setAdvanceSearch</a></li><li><a href="module-setSelectedAddressBookIndex.html">setSelectedAddressBookIndex</a></li><li><a href="module-toggleAdvanceSearch.html">toggleAdvanceSearch</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/App.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {
+  addAddressBook,
+  setAddressBookFiltered,
+} from '../actions/index'
+import { fetchData } from '../helpers/fetch'
+import AppTitle from './AppTitle'
+import AddressBookList from './AddressBookList'
+import AddressBookDetail from './AddressBookDetail'
+import AdvanceSearchModal from './AdvanceSearchModal'
+
+const mapStateToProps = state => {
+  return {
+    addressBooks: state.addressBooks,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addAddressBook: addressBook => {
+      return dispatch(addAddressBook(addressBook))
+    },
+    setAddressBookFiltered: addressBooksFiltered => {
+      return dispatch(setAddressBookFiltered(addressBooksFiltered))
+    },
+  }
+}
+
+/**
+ * Main component.
+ * 
+ * @component
+ * @example
+ * &lt;App />
+ * @hideconstructor
+ */
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoading: false,
+      isHandleNextPage: false,
+      isDarkModeEnabled: false,
+      params: {
+        page: 1,
+        results: 50,
+        seed: 'yop',
+        exc: 'gender,login,dob,registered,phone,nat'
+      }
+    }
+
+    this.handleNextPage = this.handleNextPage.bind(this)
+    this.handleDarkModeToggle = this.handleDarkModeToggle.bind(this)
+  }
+
+  /**
+   * Fetch data on init by calling handleInitData function
+   */
+  componentDidMount() {
+    this.handleInitData()
+  }
+
+  /**
+   * Handle dark mode button that called from AppTitle component,
+   * update isDarkModeEnabled state with oposite of current state
+   */
+  handleDarkModeToggle() {
+    this.setState(prevState => ({
+      isDarkModeEnabled: !prevState.isDarkModeEnabled
+    }))
+  }
+
+  /**
+   * Handle next page when user reach bottom of the list, fetch data
+   * on the next page and add it into addressBooks state,
+   * clone new addressBooks data into addressBooksFiltered state
+   * 
+   * @async
+   */
+  async handleNextPage() {
+    if(!this.state.isHandleNextPage &amp;&amp; this.props.addressBooks.length &lt; 1000) {
+      await this.setState(prevState => ({
+        isHandleNextPage: true,
+        params: {
+          ...prevState.params,
+          page: prevState.params.page + 1
+        }
+      }))
+  
+      const addressBooks = await fetchData('', {}, this.state.params)
+      await this.props.addAddressBook(addressBooks?.results || [])
+      this.props.setAddressBookFiltered(this.props.addressBooks)
+      this.setState({ isHandleNextPage: false })
+    }
+  }
+
+  /**
+   * Handle init data, show loading state while fetching data from API
+   * Put the data into addressBooks state and clone it into addressBooksFiltered state
+   * 
+   * @async
+   */
+  async handleInitData() {
+    this.setState({ isLoading: true })
+    const addressBooks = await fetchData('', {}, this.state.params)
+    this.setState({ isLoading: false })
+
+    await this.props.addAddressBook(addressBooks?.results || [])
+    this.props.setAddressBookFiltered(this.props.addressBooks)
+  }
+
+  render() {
+    const isDarkModeEnabled = this.state.isDarkModeEnabled ? ' dark-mode' : ''
+
+    return (
+      &lt;main className={`container${isDarkModeEnabled}`}>
+        &lt;AppTitle
+          isDarkModeEnabled={ this.state.isDarkModeEnabled }
+          handleDarkModeToggle={ this.handleDarkModeToggle } />
+        &lt;AddressBookList
+          isLoading={ this.state.isLoading }
+          handleNextPage={ this.handleNextPage }
+        />
+        &lt;AddressBookDetail />
+
+        &lt;AdvanceSearchModal />
+      &lt;/main>
+    )
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sun Mar 15 2020 23:08:58 GMT+0800 (Singapore Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

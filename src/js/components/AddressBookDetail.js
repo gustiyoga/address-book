@@ -10,6 +10,13 @@ const mapStateToProps = state => {
   }
 }
 
+/**
+ * Component for showing details of the user.
+ * 
+ * @component
+ * @example
+ * <AddressBookDetail />
+ */
 class AddressBookDetail extends Component {
   emptyStateComponent() {
     return(

@@ -32,7 +32,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         addressBooks: state.addressBooks.concat(addressBooks),
-        // addressBooks: state.addressBooks.concat(addressBooks),
       }
     case SET_SELECTED_ADDRESS_BOOK_INDEX:
       return {

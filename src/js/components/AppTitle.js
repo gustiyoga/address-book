@@ -19,15 +19,36 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+/**
+ * Component for showing App Title, back navigation button and dark mode toggle button.
+ * 
+ * @component
+ * @example
+ * <AppTitle
+ *    isDarkModeEnabled={ this.state.isDarkModeEnabled }
+ *    handleDarkModeToggle={ this.handleDarkModeToggle } />
+ */
 class AppTitle extends Component {
+  /**
+   * Handle back button if clicked or enter pressed when focus on the
+   * back button, it will back to the address book list view
+   */
   handleBackButton() {
     this.props.setSelectedAddressBookIndex(null)
   }
 
+  /**
+   * Handle dark mode button if clicked or enter pressed when focus on the
+   * dark mode button, it will change the theme apps by calling
+   * handleDarModeToggle function on the parent component
+   */
   handleDarkModeButton() {
     this.props.handleDarkModeToggle()
   }
 
+  /**
+   * Back button component that show on small device
+   */
   backButtonComponent() {
     return(
       <img

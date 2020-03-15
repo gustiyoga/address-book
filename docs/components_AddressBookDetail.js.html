@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>components/AddressBookDetail.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddressBookDetail.html">AddressBookDetail</a></li><li><a href="AddressBookItem.html">AddressBookItem</a><ul class='methods'><li data-type='method'><a href="AddressBookItem.html#handleFocus">handleFocus</a></li></ul></li><li><a href="AddressBookList.html">AddressBookList</a><ul class='methods'><li data-type='method'><a href="AddressBookList.html#addressBooksComponent">addressBooksComponent</a></li><li data-type='method'><a href="AddressBookList.html#emptyStateComponent">emptyStateComponent</a></li><li data-type='method'><a href="AddressBookList.html#getSearchQuery">getSearchQuery</a></li><li data-type='method'><a href="AddressBookList.html#handleScroll">handleScroll</a></li><li data-type='method'><a href="AddressBookList.html#loadingComponent">loadingComponent</a></li></ul></li><li><a href="AddressBookSearch.html">AddressBookSearch</a><ul class='methods'><li data-type='method'><a href="AddressBookSearch.html#badgeComponent">badgeComponent</a></li><li data-type='method'><a href="AddressBookSearch.html#buttonClearComponent">buttonClearComponent</a></li><li data-type='method'><a href="AddressBookSearch.html#componentDidUpdate">componentDidUpdate</a></li><li data-type='method'><a href="AddressBookSearch.html#doSearch">doSearch</a></li><li data-type='method'><a href="AddressBookSearch.html#handleChange">handleChange</a></li><li data-type='method'><a href="AddressBookSearch.html#handleClearButton">handleClearButton</a></li><li data-type='method'><a href="AddressBookSearch.html#handleFilterButton">handleFilterButton</a></li></ul></li><li><a href="AdvanceSearchModal.html">AdvanceSearchModal</a><ul class='methods'><li data-type='method'><a href="AdvanceSearchModal.html#handleChange">handleChange</a></li><li data-type='method'><a href="AdvanceSearchModal.html#handleCloseButton">handleCloseButton</a></li><li data-type='method'><a href="AdvanceSearchModal.html#handleEnter">handleEnter</a></li><li data-type='method'><a href="AdvanceSearchModal.html#handleSaveButton">handleSaveButton</a></li></ul></li><li><a href="App.html">App</a><ul class='methods'><li data-type='method'><a href="App.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="App.html#handleDarkModeToggle">handleDarkModeToggle</a></li><li data-type='method'><a href="App.html#handleInitData">handleInitData</a></li><li data-type='method'><a href="App.html#handleNextPage">handleNextPage</a></li></ul></li><li><a href="AppTitle.html">AppTitle</a><ul class='methods'><li data-type='method'><a href="AppTitle.html#backButtonComponent">backButtonComponent</a></li><li data-type='method'><a href="AppTitle.html#handleBackButton">handleBackButton</a></li><li data-type='method'><a href="AppTitle.html#handleDarkModeButton">handleDarkModeButton</a></li></ul></li><li><a href="EmptyState.html">EmptyState</a></li></ul><h3>Modules</h3><ul><li><a href="module-addAddressBook.html">addAddressBook</a></li><li><a href="module-fetchData.html">fetchData</a></li><li><a href="module-setAddressBookFiltered.html">setAddressBookFiltered</a></li><li><a href="module-setAdvanceSearch.html">setAdvanceSearch</a></li><li><a href="module-setSelectedAddressBookIndex.html">setSelectedAddressBookIndex</a></li><li><a href="module-toggleAdvanceSearch.html">toggleAdvanceSearch</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/AddressBookDetail.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import EMPTY_STATE_IMAGE from '../../image/placeholder/empty-address-book.svg'
+import EmptyState from './EmptyState'
+
+const mapStateToProps = state => {
+  return {
+    addressBook: state.selectedAddressBookIndex !== null ? state.addressBooksFiltered[state.selectedAddressBookIndex] : null,
+    selectedAddressBookIndex: state.selectedAddressBookIndex,
+  }
+}
+
+/**
+ * Component for showing details of the user.
+ * 
+ * @component
+ * @example
+ * &lt;AddressBookDetail />
+ */
+class AddressBookDetail extends Component {
+  emptyStateComponent() {
+    return(
+      &lt;EmptyState image={ EMPTY_STATE_IMAGE } text="Please select a contact" />
+    )
+  }
+  
+  addressBookComponent() {
+    const name = `${this.props.addressBook.name?.first} ${this.props.addressBook.name?.last}`
+    const imgUrl = this.props.addressBook.picture?.large
+    const street = `${this.props.addressBook.location?.street?.number} ${this.props.addressBook.location?.street?.name}`
+  
+    return(
+      &lt;div className="profile">
+        &lt;div className="profile-head">
+          &lt;div className="profile-photo">
+            &lt;img src={ imgUrl } alt={ name } width="128" />
+          &lt;/div>
+          &lt;h3>
+            { name }
+          &lt;/h3>
+        &lt;/div>
+
+        &lt;div className="profile-section">
+          &lt;h4>
+            Contact
+          &lt;/h4>
+          &lt;div className="profile-card">
+            &lt;p className="title">
+              Email
+            &lt;/p>
+            &lt;p className="subtitle">
+              &lt;a href={`mailto:${this.props.addressBook.email}`}>
+                { this.props.addressBook.email }
+              &lt;/a>
+            &lt;/p>
+
+            &lt;p className="title">
+              Phone
+            &lt;/p>
+            &lt;p className="subtitle">
+              &lt;a href={`tel:${this.props.addressBook.cell}`}>
+                { this.props.addressBook.cell }
+              &lt;/a>
+            &lt;/p>
+          &lt;/div>
+        &lt;/div>
+
+        &lt;div className="profile-section">
+          &lt;h4>
+            Location
+          &lt;/h4>
+          &lt;div className="profile-card">
+            &lt;p className="title">
+              Address
+            &lt;/p>
+            &lt;p className="subtitle">
+              { street }
+            &lt;/p>
+
+            &lt;p className="title">
+              Zip Code
+            &lt;/p>
+            &lt;p className="subtitle">
+              { this.props.addressBook.location?.postcode }
+            &lt;/p>
+
+            &lt;p className="title">
+              City
+            &lt;/p>
+            &lt;p className="subtitle">
+              { this.props.addressBook.location?.city }
+            &lt;/p>
+
+            &lt;p className="title">
+              State
+            &lt;/p>
+            &lt;p className="subtitle">
+              { this.props.addressBook.location?.state }
+            &lt;/p>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    )
+  }
+
+  render() {
+    const data = this.props.addressBook ? this.addressBookComponent() : this.emptyStateComponent()
+    const isActive = this.props.selectedAddressBookIndex !== null ? ' active' : ''
+
+    return(
+      &lt;div className={`address-detail${isActive}`}>
+        { data }
+      &lt;/div>
+    )
+  }
+
+}
+
+export default connect(
+  mapStateToProps
+)(AddressBookDetail)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sun Mar 15 2020 23:08:58 GMT+0800 (Singapore Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

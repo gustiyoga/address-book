@@ -16,7 +16,17 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+/**
+ * Component for showing address book item that show user photo, user name, and user location.
+ * 
+ * @component
+ * @example
+ * <AddressBookItem item={ addressBook } index="1"/>
+ */
 class AddressBookItem extends Component {
+  /**
+   * Set index of selected address books into redux state selectedAddressBookIndex
+   */
   handleFocus() {
     this.props.setSelectedAddressBookIndex(this.props.index)
   }

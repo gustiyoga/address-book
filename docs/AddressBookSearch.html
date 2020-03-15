@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>AddressBookSearch - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddressBookDetail.html">AddressBookDetail</a></li><li><a href="AddressBookItem.html">AddressBookItem</a><ul class='methods'><li data-type='method'><a href="AddressBookItem.html#handleFocus">handleFocus</a></li></ul></li><li><a href="AddressBookList.html">AddressBookList</a><ul class='methods'><li data-type='method'><a href="AddressBookList.html#addressBooksComponent">addressBooksComponent</a></li><li data-type='method'><a href="AddressBookList.html#emptyStateComponent">emptyStateComponent</a></li><li data-type='method'><a href="AddressBookList.html#getSearchQuery">getSearchQuery</a></li><li data-type='method'><a href="AddressBookList.html#handleScroll">handleScroll</a></li><li data-type='method'><a href="AddressBookList.html#loadingComponent">loadingComponent</a></li></ul></li><li><a href="AddressBookSearch.html">AddressBookSearch</a><ul class='methods'><li data-type='method'><a href="AddressBookSearch.html#badgeComponent">badgeComponent</a></li><li data-type='method'><a href="AddressBookSearch.html#buttonClearComponent">buttonClearComponent</a></li><li data-type='method'><a href="AddressBookSearch.html#componentDidUpdate">componentDidUpdate</a></li><li data-type='method'><a href="AddressBookSearch.html#doSearch">doSearch</a></li><li data-type='method'><a href="AddressBookSearch.html#handleChange">handleChange</a></li><li data-type='method'><a href="AddressBookSearch.html#handleClearButton">handleClearButton</a></li><li data-type='method'><a href="AddressBookSearch.html#handleFilterButton">handleFilterButton</a></li></ul></li><li><a href="AdvanceSearchModal.html">AdvanceSearchModal</a><ul class='methods'><li data-type='method'><a href="AdvanceSearchModal.html#handleChange">handleChange</a></li><li data-type='method'><a href="AdvanceSearchModal.html#handleCloseButton">handleCloseButton</a></li><li data-type='method'><a href="AdvanceSearchModal.html#handleEnter">handleEnter</a></li><li data-type='method'><a href="AdvanceSearchModal.html#handleSaveButton">handleSaveButton</a></li></ul></li><li><a href="App.html">App</a><ul class='methods'><li data-type='method'><a href="App.html#componentDidMount">componentDidMount</a></li><li data-type='method'><a href="App.html#handleDarkModeToggle">handleDarkModeToggle</a></li><li data-type='method'><a href="App.html#handleInitData">handleInitData</a></li><li data-type='method'><a href="App.html#handleNextPage">handleNextPage</a></li></ul></li><li><a href="AppTitle.html">AppTitle</a><ul class='methods'><li data-type='method'><a href="AppTitle.html#backButtonComponent">backButtonComponent</a></li><li data-type='method'><a href="AppTitle.html#handleBackButton">handleBackButton</a></li><li data-type='method'><a href="AppTitle.html#handleDarkModeButton">handleDarkModeButton</a></li></ul></li><li><a href="EmptyState.html">EmptyState</a></li></ul><h3>Modules</h3><ul><li><a href="module-addAddressBook.html">addAddressBook</a></li><li><a href="module-fetchData.html">fetchData</a></li><li><a href="module-setAddressBookFiltered.html">setAddressBookFiltered</a></li><li><a href="module-setAdvanceSearch.html">setAdvanceSearch</a></li><li><a href="module-setSelectedAddressBookIndex.html">setSelectedAddressBookIndex</a></li><li><a href="module-toggleAdvanceSearch.html">toggleAdvanceSearch</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">AddressBookSearch</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        AddressBookSearch
+        </h2>
+        
+            <div class="class-description usertext"><p>Component for showing search input.</p></div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="AddressBookSearch"><span class="type-signature"></span>new AddressBookSearch<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_AddressBookSearch.js.html">components/AddressBookSearch.js</a>, <a href="components_AddressBookSearch.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>&lt;AddressBookSearch   getSearchQuery={ this.getSearchQuery } /></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="badgeComponent"><span class="type-signature"></span>badgeComponent<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_AddressBookSearch.js.html">components/AddressBookSearch.js</a>, <a href="components_AddressBookSearch.js.html#line84">line 84</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Button clear component that show if searchQuery is not empty.
+If user clicked, it will clear searchQuery</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="buttonClearComponent"><span class="type-signature"></span>buttonClearComponent<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_AddressBookSearch.js.html">components/AddressBookSearch.js</a>, <a href="components_AddressBookSearch.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Button clear component that show if searchQuery is not empty.
+If user clicked, it will clear searchQuery</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="componentDidUpdate"><span class="type-signature"></span>componentDidUpdate<span class="signature">(prevProps)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_AddressBookSearch.js.html">components/AddressBookSearch.js</a>, <a href="components_AddressBookSearch.js.html#line57">line 57</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Do search if user changed Advance Search filter</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>prevProps</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="doSearch"><span class="type-signature"></span>doSearch<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_AddressBookSearch.js.html">components/AddressBookSearch.js</a>, <a href="components_AddressBookSearch.js.html#line139">line 139</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Search the keyword that match address book list data depends on the filter that applied.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="handleChange"><span class="type-signature"></span>handleChange<span class="signature">(event)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_AddressBookSearch.js.html">components/AddressBookSearch.js</a>, <a href="components_AddressBookSearch.js.html#line128">line 128</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Handle change on search query input, update the input value into searchQuery state</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="handleClearButton"><span class="type-signature"></span>handleClearButton<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_AddressBookSearch.js.html">components/AddressBookSearch.js</a>, <a href="components_AddressBookSearch.js.html#line110">line 110</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Handle clear button if clicked or enter pressed when focus on the
+clear button, it will clear the searchQuery state and do search again with empty string param</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="handleFilterButton"><span class="type-signature"></span>handleFilterButton<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_AddressBookSearch.js.html">components/AddressBookSearch.js</a>, <a href="components_AddressBookSearch.js.html#line120">line 120</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Handle filter button if clickd or enter pressed when focus on the
+filter button, it will toggle advance search modal by calling redux dispatch</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Sun Mar 15 2020 23:08:58 GMT+0800 (Singapore Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

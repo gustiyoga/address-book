@@ -30,6 +30,14 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+/**
+ * Component for showing search input.
+ * 
+ * @component
+ * @example
+ * <AddressBookSearch
+ *    getSearchQuery={ this.getSearchQuery } />
+ */
 class AddressBookSearch extends Component {
   constructor(props) {
     super(props)
@@ -42,12 +50,20 @@ class AddressBookSearch extends Component {
     this.doSearch = this.doSearch.bind(this)
   }
 
+  /**
+   * Do search if user changed Advance Search filter
+   * @param {object} prevProps
+   */
   componentDidUpdate(prevProps) {
     if(this.props.advanceSearch !== prevProps.advanceSearch) {
       this.doSearch()
     }
   }
 
+  /**
+   * Button clear component that show if searchQuery is not empty.
+   * If user clicked, it will clear searchQuery
+   */
   buttonClearComponent() {
     return(
       <img
@@ -61,6 +77,10 @@ class AddressBookSearch extends Component {
     )
   }
 
+  /**
+   * Button clear component that show if searchQuery is not empty.
+   * If user clicked, it will clear searchQuery
+   */
   badgeComponent() {
     const activeAdvanceSearch = Object.keys(this.props.advanceSearch).filter(val => {
       if(this.props.advanceSearch[val]) {
@@ -83,16 +103,28 @@ class AddressBookSearch extends Component {
     )
   }
 
+  /**
+   * Handle clear button if clicked or enter pressed when focus on the
+   * clear button, it will clear the searchQuery state and do search again with empty string param
+   */
   handleClearButton() {
     this.setState({ searchQuery: '' }, () => {
       this.doSearch()
     })
   }
 
+  /**
+   * Handle filter button if clickd or enter pressed when focus on the
+   * filter button, it will toggle advance search modal by calling redux dispatch
+   */
   handleFilterButton() {
     this.props.toggleAdvanceSearch(!this.props.isAdvanceSearchModalShow)
   }
 
+  /**
+   * Handle change on search query input, update the input value into searchQuery state
+   * @param {event} event
+   */
   handleChange(event) {
     const { value } = event.target
 
@@ -101,6 +133,9 @@ class AddressBookSearch extends Component {
     })
   }
 
+  /**
+   * Search the keyword that match address book list data depends on the filter that applied.
+   */
   doSearch() {
     const {
       isFilterName,

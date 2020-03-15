@@ -13,6 +13,16 @@ const mapStateToProps = state => {
   }
 }
 
+/**
+ * Component for showing address book list.
+ * 
+ * @component
+ * @example
+ * <AddressBookList
+ *    isLoading=false
+ *    handleNextPage={ this.handleNextPage }
+ * />
+ */
 class AddressBookList extends Component {
   constructor(props) {
     super(props)
@@ -23,6 +33,11 @@ class AddressBookList extends Component {
     this.getSearchQuery = this.getSearchQuery.bind(this)
   }
 
+  /**
+   * Handle scroll of the list, if the list reach (bottom - threshold) and searchQuery is empty, 
+   * call handleNextPage function on parent Component to fetch data on the next page
+   * @param {event} e
+   */
   handleScroll(e) {
     const valToBottom = e.target.scrollHeight - e.target.scrollTop
     const thresholdToBottom = 300
@@ -32,22 +47,36 @@ class AddressBookList extends Component {
     }
   }
 
+  /**
+   * Get searchQuery from AddressBookSearch component and put on state
+   * @param {string} searchQuery
+   */
   getSearchQuery(searchQuery) {
     this.setState({  searchQuery })
   }
 
+  /**
+   * Empty state component that will show if no data in the list
+   */
   emptyStateComponent() {
     return(
       <EmptyState image={ EMPTY_STATE_IMAGE } text="No data" />
     )
   }
 
+  /**
+   * Loading component that will show on first load while fetching data
+   */
   loadingComponent() {
     return(
       <EmptyState image={ LOADING_IMAGE } text="Loading" />
     )
   }
 
+  /**
+   * AddressBooks component showing simple data of the each address book into list.
+   * Will load on the dom if user scroll reach the threshold
+   */
   addressBooksComponent() {
     return(
       this.props.addressBooksFiltered.map((item, index) => {
