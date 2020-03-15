@@ -24,9 +24,9 @@ Address book app based on reactjs, you can try [here](https://gustiyoga.github.i
 - [x] JSDoc
 
 ### Libraries
-webpack `4.42`
-react `16.13`
-redux `4.0.5`
-react-redux `7.2`
-react-lazy-load `2.6.5`
-minireset.css `0.0.6`
+- webpack `4.42`
+- react `16.13`
+- redux `4.0.5`
+- react-redux `7.2`
+- react-lazy-load `2.6.5`
+- minireset.css `0.0.6`

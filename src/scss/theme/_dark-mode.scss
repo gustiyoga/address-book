@@ -67,6 +67,9 @@
   }
 
   // elements
+  .badge {
+    background-color: $bdazzled-blue;
+  }  
   .checkbox {
     input {
       &:checked ~ .checkmark {
