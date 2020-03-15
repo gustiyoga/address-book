@@ -13,15 +13,15 @@ Address book app based on reactjs, you can try [here](https://gustiyoga.github.i
 3. `npm run prod` to build
 
 ### Task Lists
-[x] Include React, Redux and Webpack
-[ ] State management layer
-[ ] Unit tests
-[x] Code splitting
-[x] Night Mode
-[x] Transitions
-[x] Infinite load (max 1000 data. 50 data per-fetch)
-[x] Advanced Search
-[x] JSDoc
+- [x] Include React, Redux and Webpack
+- [ ] State management layer
+- [ ] Unit tests
+- [x] Code splitting
+- [x] Night Mode
+- [x] Transitions
+- [x] Infinite load (max 1000 data. 50 data per-fetch)
+- [x] Advanced Search
+- [x] JSDoc
 
 ### Libraries
 webpack `4.42`
